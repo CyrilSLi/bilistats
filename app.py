@@ -67,12 +67,12 @@ if __name__ == "__main__":
         while True:
             video = get_video ()
             if video:
-                status_text = f"{video[0]} ({timedelta (seconds = video [1])} / {timedelta (seconds = video [2])})".replace (":", "\u2236")
+                status_text = f"{video[0]}\n({timedelta (seconds = video [1])} / {timedelta (seconds = video [2])})".replace (":", "\u2236")
                 status_emoji = ":bilibili:" # Replace with another emoji if desired
             else:
                 status_text, status_emoji = orig_text, orig_emoji
             set_status (status_text, status_emoji)
-            print (f"{int (time.time ())}\t{status_emoji}\t{status_text}")
+            print (f"{int (time.time ())}\t{status_emoji}\t{repr (status_text)}")
             time.sleep (random.randint (45, 60)) # Introduces some randomness, hopefully avoiding rate limiting
     except BaseException as e:
         print ("An exception occurred:", e)
